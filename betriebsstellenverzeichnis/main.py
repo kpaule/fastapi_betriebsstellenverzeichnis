@@ -1,14 +1,15 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
-from . import models
+from . import models, settings
 from .database import engine, SessionLocal
 from .csv_loader import load_csv
 
+stg = settings.Settings()
 app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
-load_csv("DBNetz-Betriebsstellenverzeichnis-Stand2021-10.csv")
+load_csv(stg.csv_name)
 
 
 def get_db():
