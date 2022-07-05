@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, false
+from sqlalchemy import Column, Integer, String
 from .database import Base
 
 
